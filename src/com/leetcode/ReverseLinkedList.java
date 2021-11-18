@@ -1,0 +1,43 @@
+package com.leetcode;
+
+/**
+ * 206. 反转链表
+ * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+ *
+ * 示例 1：
+ * 输入：head = [1,2,3,4,5]
+ * 输出：[5,4,3,2,1]
+ *
+ * 示例 2：
+ * 输入：head = [1,2]
+ * 输出：[2,1]
+ *
+ * 示例 3：
+ * 输入：head = []
+ * 输出：[]
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/reverse-linked-list
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+public class ReverseLinkedList {
+    public ListNode reverseList(ListNode head) {
+        //base case
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode last = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
+    }
+
+    private static class ListNode {
+        int val;
+        ListNode next;
+        public ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+}
